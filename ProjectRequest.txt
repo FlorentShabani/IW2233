@@ -1,11 +1,11 @@
 The first part of the project should contain:
     
-      1. The website should have a minimum of 3 such as: Main pages (Home/Dashboard), About us, Products, News, Contact us, Page that has (product details, news, offers,       etc.)
-      2. Use of JavaScript for validation of contact and login/registration forms
-      3. To create the Page/login and registration form
-      4. The website must be responsive - (in this case it is not mandatory, but it is recommended that it be done after the submission of the completion, ie in the end       of exercises/semester project) life will be current, this project)
-      5. The use of the slider is optional and possible in the project (it will be mandatory for the second delivery).
-      6. Use of GIT.
+1. The website should have a minimum of 3 such as: Main pages (Home/Dashboard), About us, Products, News, Contact us, Page that has (product details, news, offers, etc.)
+2. Use of JavaScript for validation of contact and login/registration forms
+3. To create the Page/login and registration form
+4. The website must be responsive - (in this case it is not mandatory, but it is recommended that it be done after the submission of the completion, ie in the end of exercises/semester project) life will be current, this project)
+5. The use of the slider is optional and possible in the project (it will be mandatory for the second delivery).
+6. Use of GIT.
 
 Clarification: The use of JavaScript libraries such as jQuery, Validate.js, etc. in form validation is allowed, you must also have validation only with Plain JavaScript.
 
