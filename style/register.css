@@ -90,6 +90,10 @@ a {
     color: rgb(121, 121, 121);
 }
 
+.loginbox a:hover {
+    color: #ffc107;
+}
+
 /*
 * Autor: Rrahman Avdiaj
 */
