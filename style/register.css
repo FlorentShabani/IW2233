@@ -3,54 +3,50 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     background-image: url("images/patterns.png");
     background-repeat: no-repeat;
     background-size: 100%;
     background-color: rgb(30, 30, 30);
     background-size: center;
-    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
-.loginbox {
-    width: 320px;
-    height: 420px;
-    background: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+.registration-form {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
     top: 50%;
     left: 50%;
-    position: absolute;
     transform: translate(-50%, -50%);
+    width: 400px;
     box-sizing: border-box;
     border-radius: 30px;
     padding: 60px 30px;
 }
 
-
-
-h1 {
-    margin: 0;
+.registration-form h1 {
+    font-size: 30px;
     padding: 0 0 20px;
     text-align: center;
-    font-size: 30px;
     text-transform: uppercase;
+    margin-bottom: 25px;
 }
 
-
-.loginbox p {
+.registration-form p {
     margin: 0;
     padding: 0;
     font-weight: bold;
+
 }
 
-.loginbox input {
+.registration-form input {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.loginbox input[type="text"],
-input[type="password"] {
+.registration-form input {
     border: none;
     border-bottom: 1px solid rgb(0, 0, 0);
     background: transparent;
@@ -58,34 +54,43 @@ input[type="password"] {
     height: 40px;
     color: rgb(0, 0, 0);
     font-size: 16px;
-
 }
 
-.loginbox input[type="submit"] {
+.registration-form [type="submit"] {
     border: none;
     outline: none;
     height: 40px;
-    background: #050505;
+    background: #000000;
     color: rgb(255, 255, 255);
     font-size: 18px;
-    font-weight: bold;
     border-radius: 20px;
 }
 
-.loginbox input[type="submit"]:hover {
+.registration-form button {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.registration-form input[type="submit"]:hover {
     cursor: pointer;
     background-color: #ffc107;
     color: #000;
 }
 
-.loginbox a {
+a {
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
     color: rgb(121, 121, 121);
 }
 
-.loginbox a:hover {
+.registration-form a:hover {
     color: #ffc107;
 }
 
