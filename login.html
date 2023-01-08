@@ -6,15 +6,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script defer src="js/validate.js"></script>
+    <meta name="google" content="notranslate">
 
 <body>
     <div class="loginbox">
         <h1>Log in</h1>
-        <form>
+        <form onsubmit="return validateLogin()">
             <p>Username</p>
-            <input type="text" name="" placeholder="Enter Username">
+            <input type="text" id="username" name="username" placeholder="Enter Username">
             <p>Password</p>
-            <input type="password" name="" placeholder="Enter Password">
+            <input type="password" id="password" name="password" placeholder="Enter Password">
             <input type="submit" name="" value="LOGIN"><br>
             <a href="register.html"> Don't have an account?</a>
         </form>

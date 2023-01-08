@@ -6,25 +6,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script defer src="js/validate.js"></script>
+    <meta name="google" content="notranslate">
 </head>
 
 <body>
     <div class="registration-form">
         <h1>Sign up</h1>
-        <form action="#" method="post">
+        <form onsubmit="return validateRegister()">
             <p>Full Name:</p>
-            <input type="text" name="fullname" placeholder="Enter Full Name">
+            <input type="text" id="fullname" name="name" placeholder="Enter Full Name">
             <p>Username:</p>
-            <input type="text" name="username" placeholder="Enter Username">
+            <input type="text" id="username" name="username" placeholder="Enter Username">
             <p>Email:</p>
-            <input type="text" name="email" placeholder="Enter Email">
+            <input type="text" id="email" name="email" placeholder="Enter Email">
             <p>Date of Birth:</p>
-            <input type="date" name="date" placeholder="Enter Date">
+            <input type="text" id="date" name="date" placeholder="Enter Date (DD.MM.YYYY)">
             <p>Password:</p>
-            <input type="password" name="password" placeholder="Enter Password">
+            <input type="password" id="password" name="password" placeholder="Enter Password">
             <p>Confirm Password:</p>
-            <input type="password" name="Confirm password" placeholder="Confirm Password">
-            <input type="submit" name="" value="SIGN UP"><br>
+            <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password">
+            <input type="submit" id="send" value="SIGN UP"><br>
             <a href="login.html"> Already have an account?</a>
         </form>
     </div>
