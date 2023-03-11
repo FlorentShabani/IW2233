@@ -2,7 +2,7 @@ function validateRegister() {
     let fullname = document.getElementById("fullname").value;
     let username = document.getElementById("username").value;
     let email = document.getElementById("email").value;
-    let date = document.getElementById("date").value;
+    let date = document.getElementById("birthdate").value;
     let password = document.getElementById("password").value;
     let cpassword = document.getElementById("cpassword").value;
 
@@ -26,7 +26,7 @@ function validateRegister() {
         return false;
     }
 
-    if(!/^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.[0-9]{4}$/.test(date)) {
+    if(!/^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/.test(date)) {
         alert("Invalid birthdate!");
         return false;
     }
@@ -43,8 +43,6 @@ function validateRegister() {
 }
 
 function validateLogin() {
-    const RegUser = "admin";
-    const RegPass = "admin";
 
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -54,10 +52,7 @@ function validateLogin() {
         return false;
     }
 
-    if(!((username == RegUser) && (password == RegPass))) {
-        alert("Invalid Username or Password!");
-        return false;
-    }
+    return true;
 }
 
 function validateContact() {

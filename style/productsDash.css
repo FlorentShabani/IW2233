@@ -1,0 +1,126 @@
+* {
+    font-family: 'Roboto';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/patterns.png");
+    background-repeat: repeat;
+    background-size: 100%;
+    background-color: rgb(30, 30, 30);
+    background-size: center;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(28px);
+    font-size: 16px;
+
+}
+
+.wrapper {
+    padding: 20px;
+}
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top : 6%;
+}
+
+.menu ul li {
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline;
+    font-size: 30px;
+    color: white;
+}
+
+.menu ul a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    margin-top: 50px;
+}
+
+
+.menu-item {
+    margin: 5% 0;
+}
+
+.menu ul li:hover {
+    background-color: #555;
+}
+
+
+.logreglogo {
+    position: absolute;
+    bottom: 2%;
+    left: 35%;
+    filter: invert(100%);
+}
+
+.logreglogo img {
+    max-width: 100%;
+}
+
+.table {
+    border-collapse: collapse;
+    border: 1px solid white;
+    width: 100%;
+    max-width: fit-content;
+    margin: 3% 16%;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.table thead tr {
+    background-color: #f7f7f7;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+}
+
+.table tbody tr {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #e7e7e7;
+}
+
+.table tbody tr:hover {
+    background-color: #b1b1b1;
+}
+
+.table form {
+    margin: auto;
+}
+.table form button{
+    color: rgb(236, 69, 69);
+    margin-right: 5px;
+}
