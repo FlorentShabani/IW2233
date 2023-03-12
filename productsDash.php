@@ -1,7 +1,10 @@
 <?php
 
-if (!isset($_SESSION)) {
-    session_start();
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+    header("Location: denied.php");
+    exit();
 }
 
 require_once('CRUD/productsCRUD.php');
@@ -12,6 +15,10 @@ $pdo = $config->connDB();
 
 $prodCRUD = new productsCRUD($pdo);
 $products = $prodCRUD->shfaqTeGjithaProduktet();
+if (isset($_POST['update'])) {
+    header('Location: productsUpdate.php');
+    exit;
+}
 
 if (isset($_POST['prodid'])) {
     $prodid = $_POST['prodid'];
@@ -32,12 +39,18 @@ if (isset($_POST['prodid'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <meta name="google" content="notranslate">
-    <title>Users | Dashboard</title>
+    <title>Products | Dashboard</title>
 </head>
 
 <body>
     <div class = "container">
         <?php include 'headfoot/sidebar.php' ?>
+            <div class="product-create">
+                <p>Do you want to create a product?</p>
+                <form action="productsCreate.php">
+                <button type="submit">Create</button>
+                </form>
+            </div>
             <div class="table">
                 <table>
                     <thead>
@@ -62,14 +75,14 @@ if (isset($_POST['prodid'])) {
                             echo "<td>{$prod['user_added']}</td>";
                             echo "<td>{$prod['date_added']}</td>";
                             echo "<td>";
+                            echo "<form method='POST' action='productsUpdate.php'>";
+                            echo "<input type='hidden' name='update' value='{$prod['prodid']}'>";
+                            echo "<button type='submit'>Update</button></form>";
                             echo "<form method='POST' action='productsDash.php'>";
-                            echo "<input type='hidden' name='prodid' value='{$prod['prodid']}'>";
-                            echo "<button type='submit'>Create</button>";
-                            echo "<input type='hidden' name='prodid' value='{$prod['prodid']}'>";
-                            echo "<button type='submit'>Update</button>";
                             echo "<input type='hidden' name='prodid' value='{$prod['prodid']}'>";
                             echo "<button type='submit'>Delete</button>";
                             echo "</form></td>";
+                            echo "</tr>";
                             echo "</tr>";
                         }
                         ?>

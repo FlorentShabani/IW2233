@@ -5,31 +5,17 @@ if (isset($_SESSION['username'])) {
     session_start();
 }
 
-require 'db/config.php';
+require_once('CRUD\usersCRUD.php');
+
 $config = new config();
 $pdo = $config->connDB();
+
+$usersCRUD = new usersCRUD($pdo);
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $message = '';
-
-    $query = $pdo->prepare('SELECT id, fullname, username, email, password FROM users WHERE username = :username');
-    $query->bindParam(':username', $username);
-    $query->execute();
-
-    $user = $query->fetch(PDO::FETCH_ASSOC);
-
-    if ($user && password_verify($password, $user['password'])) {
-
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['password'] = $user['password'];
-
-        header("Location: index.php");
-
-    } else {
-        $message = 'Invalid username or password.';
-    }
+    $message = $usersCRUD->login($username, $password);
 }
 ?>
 

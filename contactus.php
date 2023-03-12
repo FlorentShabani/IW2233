@@ -14,9 +14,9 @@ if (isset($_POST['submit'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    $contactCRUD = new contactusCRUD($pdo, $fullname, $email, $subject, $message);
+    $contactCRUD = new contactusCRUD($pdo);
 
-    $message = $contactCRUD->saveToDatabase();
+    $message = $contactCRUD->saveToDatabase($fullname, $email, $subject, $message);
 }
 
 ?>
@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact us | Stitch</title>
     <link rel="stylesheet" href="style/contactus.css">
+    <link rel="stylesheet" href="style/dropdown.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">

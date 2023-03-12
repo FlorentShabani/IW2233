@@ -48,14 +48,34 @@ class contactusCRUD extends config
         }
     }
     
-    public function saveToDatabase()
+    public function saveToDatabase($fullname, $email, $subject, $message)
     {
         try{
+            if (empty($fullname) || empty($email) || empty($subject) || empty($message)){
+                return "All fields are required";
+            }
+            
+            if (!preg_match('/^[A-Za-z]+\s[A-Za-z]+$/', $fullname)) {
+                return "Invalid fullname";
+            }
+    
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return "Invalid email address";
+            }
+    
+            if (!preg_match('/^[a-zA-Z0-9 ]{3,100}$/', $subject)) {
+                return "Invalid subject";
+            }
+
+            if (!preg_match('/^[a-zA-Z0-9 .,!?\-]{3,480}$/', $subject)) {
+                return "Invalid message";
+            }
+
             $query = $this->pdo->prepare('INSERT INTO contactus (fullname, email, subject, message) VALUES (:fullname, :email, :subject, :message)');
-            $query->bindParam(':fullname', $this->fullname);
-            $query->bindParam(':email', $this->email);
-            $query->bindParam(':subject', $this->subject);
-            $query->bindParam(':message', $this->message);
+            $query->bindParam(':fullname', $fullname);
+            $query->bindParam(':email', $email);
+            $query->bindParam(':subject', $subject);
+            $query->bindParam(':message', $message);
     
             $query->execute();
         }catch(PDOException $e){

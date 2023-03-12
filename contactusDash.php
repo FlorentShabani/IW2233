@@ -1,6 +1,9 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+    header("Location: denied.php");
+    exit();
 }
 
 require_once('CRUD/contactusCRUD.php');

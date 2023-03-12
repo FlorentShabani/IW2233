@@ -1,23 +1,34 @@
 <?php
+session_start();
 
-if (!isset($_SESSION)) {
-    session_start();
+if (!isset($_SESSION['username']) || $_SESSION['role'] != 'admin') {
+    header("Location: denied.php");
+    exit();
 }
 
 require_once('CRUD/usersCRUD.php');
 
+//creates a db connection
 $config = new config();
 
+//sends the db informations to the constructor for further functions
 $pdo = $config->connDB();
-
 $usersCRUD = new usersCRUD($pdo);
+
+//reads all users for the dashboard
 $users = $usersCRUD->readAllUsers();
 
+if (isset($_POST['update'])) {
+    header('Location: usersUpdate.php');
+    exit;
+}
+//deletes a user when the delete button is pressed
 if (isset($_POST['ID'])) {
     $ID = $_POST['ID'];
 
     $usersCRUD->deleteUser($ID);
 }
+
 
 ?>
 
@@ -36,46 +47,51 @@ if (isset($_POST['ID'])) {
 </head>
 
 <body>
-    <div class = "container">
+    <div class="container">
         <?php include 'headfoot/sidebar.php' ?>
-            <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Full Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Birthdate</th>
-                            <th>Password</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($users as $user) {
-                            echo "<tr>";
-                            echo "<td>{$user['fullname']}</td>";
-                            echo "<td>{$user['username']}</td>";
-                            echo "<td>{$user['email']}</td>";
-                            echo "<td>{$user['birthdate']}</td>";
-                            echo "<td>{$user['password']}</td>";
-                            echo "<td>{$user['role']}</td>";
-                            echo "<td>";
-                            echo "<form method='POST' action='usersDash.php'>";
-                            echo "<input type='hidden' name='ID' value='{$user['ID']}'>";
-                            echo "<button type='submit'>Create</button>";
-                            echo "<input type='hidden' name='ID' value='{$user['ID']}'>";
-                            echo "<button type='submit'>Update</button>";
-                            echo "<input type='hidden' name='ID' value='{$user['ID']}'>";
-                            echo "<button type='submit'>Delete</button>";
-                            echo "</form></td>";
-                            echo "</tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+        <div class="user-create">
+            <p>Do you want to create a user?</p>
+            <form action="usersCreate.php">
+                <button type="submit">Create</button>
+            </form>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Birthdate</th>
+                        <th>Role</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($users as $user) {
+                        echo "<tr>";
+                        echo "<td>{$user['fullname']}</td>";
+                        echo "<td>{$user['username']}</td>";
+                        echo "<td>{$user['email']}</td>";
+                        echo "<td>{$user['birthdate']}</td>";
+                        echo "<td>{$user['role']}</td>";
+                        echo "<td>{$user['emp_picture']}</td>";
+                        echo "<td>";
+                        echo "<form method='POST' action='usersUpdate.php'>";
+                        echo "<input type='hidden' name='update' value='{$user['ID']}'>";
+                        echo "<button type='submit'>Update</button></form>";
+                        echo "<form method='POST' action='usersDash.php'>";
+                        echo "<input type='hidden' name='ID' value='{$user['ID']}'>";
+                        echo "<button type='submit'>Delete</button>";
+                        echo "</form></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 
