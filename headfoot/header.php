@@ -14,10 +14,23 @@
                 <a href="contactus.php">
                     <li>CONTACT US</li>
                 </a>
+                <a href="aboutus.php">
+                    <li>ABOUT US</li>
+                </a>
+                <a href="location.php">
+                    <li>LOCATION</li>
+                </a>
             </ul>
         </div>
-        <div class="logreglogo">
-            <a href="login.php"><img src="style/images/loginreg.png" height="50px" /></a>
+
+        <div class="dropdown">
+            <img src="style/images/loginreg.png" height="50px" class="dropbtn">
+            <div class="dropdown-content">
+                <a href="dashboard.php">Dashboard</a>
+                <a href="login.php">Login</a>
+                <a href="register.php">Register</a>
+                <a href="logout.php">Logout</a>
+            </div>
         </div>
     </div>
 </div>

@@ -1,14 +1,20 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
 }
 
-require 'db/config.php';
+require_once('CRUD\usersCRUD.php');
+
 $config = new config();
 $pdo = $config->connDB();
+
+$usersCRUD = new usersCRUD($pdo);
 
 $message = '';
 
@@ -17,34 +23,11 @@ if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $birthdate = $_POST['birthdate'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = $_POST['password'];
+    $role = $_POST['roles'];
 
-    try {
-        $stmt = $pdo->prepare('INSERT INTO users (fullname, username, email, birthdate, password) VALUES (:fullname, :username, :email, :birthdate, :password)');
-        $stmt->execute(
-            array(
-                ':fullname' => $fullname,
-                ':username' => $username,
-                ':email' => $email,
-                ':birthdate' => $birthdate,
-                ':password' => $password
-            )
-        );
-        header("Location: login.php");
-    } catch (PDOException $e) {
-        $message = 'Username or email already exists.';
-    }
+    $message = $usersCRUD->createUser($fullname, $username, $email, $birthdate, $password, $role);
 
-    if ($stmt->rowCount() > 0) {
-        $message = "Successfully created your account";
-    } else {
-        if (empty($message)) {
-            $message = "Username or email already exists.";
-        }
-        $message = "A problem occurred creating your account";
-    }
-
-    $pdo = null;
 }
 
 ?>
@@ -78,6 +61,7 @@ if (isset($_POST['submit'])) {
             <input type="password" id="password" name="password" placeholder="Enter Password">
             <p>Confirm Password:</p>
             <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password">
+            <input type='hidden' name='roles' value='user'>
             <input type="submit" name="submit" id="send" value="SIGN UP"><br>
             <a href="login.php"> Already have an account?</a>
         </form>

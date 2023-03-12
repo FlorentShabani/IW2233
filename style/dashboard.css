@@ -1,0 +1,112 @@
+* {
+    font-family: 'Roboto';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("images/patterns.png");
+    background-repeat: repeat;
+    background-size: 100%;
+    background-color: rgb(30, 30, 30);
+    background-size: center;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(28px);
+    font-size: 16px;
+
+}
+
+.wrapper {
+    padding: 20px;
+}
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top : 6%;
+}
+
+.menu ul li {
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline;
+    font-size: 30px;
+    color: white;
+}
+
+.menu ul a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    margin-top: 50px;
+}
+
+
+.menu-item {
+    margin: 5% 0;
+}
+
+.menu ul li:hover {
+    background-color: #555;
+}
+
+
+.logreglogo {
+    position: absolute;
+    bottom: 2%;
+    left: 35%;
+    filter: invert(100%);
+}
+
+.logreglogo img {
+    max-width: 100%;
+}
+
+.welcome-card {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding: 60px 30px;
+}
+
+.welcome-card h1 {
+    font-size: 30px;
+    padding: 0 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.welcome-card p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+}

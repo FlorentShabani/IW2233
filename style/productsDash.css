@@ -14,9 +14,12 @@ body {
 
 .container {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
+    height: 100vh;
+    margin-left: 5%;
+}
 
 #sidebar {
     position: fixed;
@@ -89,7 +92,7 @@ body {
     border: 1px solid white;
     width: 100%;
     max-width: fit-content;
-    margin: 3% 16%;
+    margin: 3% 16% 0;
     font-size: 14px;
     line-height: 1.4;
 }
@@ -123,4 +126,70 @@ body {
 .table form button{
     color: rgb(236, 69, 69);
     margin-right: 5px;
+}
+
+.product-create {
+    background-color: rgb(255, 255, 255);
+    width: 500px;
+    height: 175px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding: 60px 30px;
+}
+
+.product-create h1 {
+    font-size: 30px;
+    padding: 0 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.product-create p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product-create input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.product-create input {
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+}
+
+.product-create [type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.product-create button {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.product-create [type="submit"]:hover {
+    cursor: pointer;
+    background-color: #ffc107;
+    color: #000;
 }
